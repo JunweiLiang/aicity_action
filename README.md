@@ -20,11 +20,11 @@
        ```
        The `processed_anno_original.csv` should have 1115 lines.
 
-     + Cut the videos (you can also directly run bash)
+     + Cut the videos (you can also directly run bash).
 
        ```
-        $ mkdir data/A1_clips
-        $ parallel -j 4 < A1_cut.sh
+       $ mkdir data/A1_clips
+       $ parallel -j 4 < A1_cut.sh
        ```
 
      + Make annotation splits (without empty segments, see paper for details)
