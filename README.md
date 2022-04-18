@@ -10,6 +10,7 @@
   2. Download our processed annotations from [here](https://drive.google.com/file/d/1-Xj0HsYJqsA_mdrTBUijp4GHSr8Zrin6/view?usp=sharing). This annotation simply re-formats the original annotation. Put the file under `data/annotations/`
 
   3. Generate files for training on A1 videos.
+
     + Get the processed annotations and video cutting cmds
       ```
         $ python scripts/aicity_convert_anno.py data/annotations/annotation_A1.edited.csv \
