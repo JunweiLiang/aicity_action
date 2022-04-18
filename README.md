@@ -99,36 +99,36 @@
 
   2. Get the thresholds. Put them under `thresholds/`.
 
-  + Best public leaderboard threshold from [here](https://drive.google.com/file/d/1_TqeoV7MEuVp0LzlN99t3Kj5TvG-1Ry5/view?usp=sharing). (Empirically searched)
+     + Best public leaderboard threshold from [here](https://drive.google.com/file/d/1_TqeoV7MEuVp0LzlN99t3Kj5TvG-1Ry5/view?usp=sharing). (Empirically searched)
 
-  + Best general leaderboard threshold from [here](https://drive.google.com/file/d/1xu3heJctorJ5QDyXCL2z81cUb3B3cwoN/view?usp=sharing). (Grid searched)
+     + Best general leaderboard threshold from [here](https://drive.google.com/file/d/1xu3heJctorJ5QDyXCL2z81cUb3B3cwoN/view?usp=sharing). (Grid searched)
 
-  + A1 pyslowfast_anno_naempty0/splits_1 trained and empirically searched from [here](https://drive.google.com/file/d/14gBk-mckw3eKKGu-rJtW2crn_z-4f9ug/view?usp=sharing).
+     + A1 pyslowfast_anno_naempty0/splits_1 trained and empirically searched from [here](https://drive.google.com/file/d/14gBk-mckw3eKKGu-rJtW2crn_z-4f9ug/view?usp=sharing).
 
   3. Run sliding-window classification (single GPU).
 
-  Given a list of video names and the path to the videos, run the model.
-  16x4, 448 model with batch_size=1 will take 5 GB GPU memory to run.
+     Given a list of video names and the path to the videos, run the model.
+     16x4, 448 model with batch_size=1 will take 5 GB GPU memory to run.
 
-  ```
-    # cd back to the root path
-    $ python scripts/run_action_classification_temporal_inf.py A2_videos.lst data/A1_A2_videos/ \
-    models/aicity_train_mvitV2_16x4_fromk700_e200_lr0.0001_yeswarmup_nomixup_dp0.5_dpr0.4_adamw_na0_full_448.pyth \
-    test/16x4_s16_448_full_na0_A2test \
-    --model_dataset aicity --frame_length 16 --frame_stride 4 --proposal_length 64 \
-    --proposal_stride 16 --video_fps 30.0  --frame_size 448 \
-    --pyslowfast_cfg configs/Aicity/MVITV2_FULL_B_16x4_CONV_448.yaml \
-    --batch_size 1 --num_cpu_workers 4
-  ```
+     ```
+      # cd back to the root path
+      $ python scripts/run_action_classification_temporal_inf.py A2_videos.lst data/A1_A2_videos/ \
+      models/aicity_train_mvitV2_16x4_fromk700_e200_lr0.0001_yeswarmup_nomixup_dp0.5_dpr0.4_adamw_na0_full_448.pyth \
+      test/16x4_s16_448_full_na0_A2test \
+      --model_dataset aicity --frame_length 16 --frame_stride 4 --proposal_length 64 \
+      --proposal_stride 16 --video_fps 30.0  --frame_size 448 \
+      --pyslowfast_cfg configs/Aicity/MVITV2_FULL_B_16x4_CONV_448.yaml \
+      --batch_size 1 --num_cpu_workers 4
+     ```
 
   4. Run post-processing with the given threshold file to get the submission files.
 
-  ```
-    $ python scripts/aicity_inf.py test/16x4_s16_448_full_na0_A2test thresholds/public_leaderboard_thres.txt \ A2_video_ids.csv test/16x4_s16_448_full_na0_A2test.txt --agg_method avg \
-    --chunk_sort_base_single_vid score --chunk_sort_base_multi_vid length --use_num_chunk 1
-  ```
+     ```
+      $ python scripts/aicity_inf.py test/16x4_s16_448_full_na0_A2test thresholds/public_leaderboard_thres.txt \ A2_video_ids.csv test/16x4_s16_448_full_na0_A2test.txt --agg_method avg \
+      --chunk_sort_base_single_vid score --chunk_sort_base_multi_vid length --use_num_chunk 1
+     ```
 
-  The submission file is `test/16x4_s16_448_full_na0_A2test.txt`. This should get F1=0.3295 as on the leaderboard on A2 test.
+     The submission file is `test/16x4_s16_448_full_na0_A2test.txt`. This should get F1=0.3295 as on the leaderboard on A2 test.
 
 ## Acknowledgement
   This code base heavily adopts the [PySlowFast](https://github.com/facebookresearch/SlowFast) code base.
