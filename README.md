@@ -94,8 +94,11 @@
     Follow the Training process or download our checkpoint from [here](https://drive.google.com/file/d/12LQ_2iZZyFJcUjJ6zpU1CcHCbYEmoGJs/view?usp=sharing). Put the models under `models/`. This is the model that achieves No.2 on the A2 leaderboard.
 
   2. Get the thresholds. Put them under `thresholds/`.
+
     + Best public leaderboard threshold from [here](https://drive.google.com/file/d/1_TqeoV7MEuVp0LzlN99t3Kj5TvG-1Ry5/view?usp=sharing). (Empirically searched)
+
     + Best general leaderboard threshold from [here](https://drive.google.com/file/d/1xu3heJctorJ5QDyXCL2z81cUb3B3cwoN/view?usp=sharing). (Grid searched)
+
     + A1 pyslowfast_anno_naempty0/splits_1 trained and empirically searched from [here](https://drive.google.com/file/d/14gBk-mckw3eKKGu-rJtW2crn_z-4f9ug/view?usp=sharing).
 
   3. Run sliding-window classification (single GPU).
