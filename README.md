@@ -59,6 +59,7 @@
   Here we test it with a machine with 3-GPUs (11GB memory per GPU). The code base supports multi-machine training as well.
 
   First we need to add the code file path (root path) to PYTHONPATH:
+
   ```
     $ export PYTHONPATH=$PWD/:$PYTHONPATH;
   ```
@@ -66,6 +67,7 @@
   Remove `Dashboard_User_id_24026_NoAudio_3.24026.533.535.MP4` from `data/annotations/pyslowfast_anno_na0/full/train.csv`.
 
   Train:
+
   ```
     $ mkdir -p exps/aicity_train
     $ cd exps/aicity_train
@@ -85,6 +87,7 @@
     MODEL.DROPOUT_RATE 0.5 MVIT.DROPPATH_RATE 0.4 \
     SOLVER.OPTIMIZING_METHOD adamw
   ```
+
   The model we used that ranks No.2 on the leaderboard was trained using 2x8 A100 GPUs with a global batch size of 64 and a learning rate of 1e-4 (also with gradient check-pointing but no mixed precision training). So for a 3-GPU train, we use a batch size of 3 and a learning rate of 0.000005 according to the linear scaling rule. However, in order to reproduce our results, a similar number of batch size is recommended.
 
 ## Inference
@@ -104,6 +107,7 @@
   3. Run sliding-window classification (single GPU).
     Given a list of video names and the path to the videos, run the model.
     16x4, 448 model with batch_size=1 will take 5 GB GPU memory to run.
+
     ```
       # cd back to the root path
       $ python scripts/run_action_classification_temporal_inf.py A2_videos.lst data/A1_A2_videos/ \
