@@ -22,35 +22,35 @@
 
      + Cut the videos (you can also directly run bash)
 
-     ```
+       ```
       $ mkdir data/A1_clips
       $ parallel -j 4 < A1_cut.sh
-     ```
+       ```
 
      + Make annotation splits (without empty segments, see paper for details)
 
-     ```
+       ```
       $ python scripts/aicity_split_anno.py data/annotations/processed_anno_original.csv \
       data/annotations/pyslowfast_anno_na0 --method 1
-     ```
+       ```
 
      + Make annotation splits (with empty segments)
 
-     ```
+       ```
       $ python scripts/aicity_split_anno.py data/annotations/processed_anno_original.csv \
       data/annotations/pyslowfast_anno_naempty0 --method 2
-     ```
+       ```
 
      + Make annotation files for training on the whole A1 set
 
-     ```
+       ```
       $ mkdir data/annotations/pyslowfast_anno_na0/full
       $ cat data/annotations/pyslowfast_anno_na0/splits_1/train.csv \
       data/annotations/pyslowfast_anno_na0/splits_1/val.csv \
       > data/annotations/pyslowfast_anno_na0/full/train.csv
       $ cp data/annotations/pyslowfast_anno_na0/splits_1/val.csv \
       data/annotations/pyslowfast_anno_na0/full/
-     ```
+       ```
 
      + download pre-trained K700 checkpoints from [here](https://drive.google.com/file/d/1wn1392Kn6CFxcSH6lJpqZky9-PJxqTlY/view?usp=sharing). Put the `k700_train_mvitV2_full_16x4_fromscratch_e200_448.pyth` under `models/`. This model achieves 71.91 top-1 accuracy on Kinetics700 validation sets.
 
