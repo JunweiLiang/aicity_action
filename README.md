@@ -29,28 +29,28 @@
 
   + Make annotation splits (without empty segments, see paper for details)
 
-    ```
-      $ python scripts/aicity_split_anno.py data/annotations/processed_anno_original.csv \
-      data/annotations/pyslowfast_anno_na0 --method 1
-    ```
+  ```
+    $ python scripts/aicity_split_anno.py data/annotations/processed_anno_original.csv \
+    data/annotations/pyslowfast_anno_na0 --method 1
+  ```
 
   + Make annotation splits (with empty segments)
 
-    ```
-      $ python scripts/aicity_split_anno.py data/annotations/processed_anno_original.csv \
-      data/annotations/pyslowfast_anno_naempty0 --method 2
-    ```
+  ```
+    $ python scripts/aicity_split_anno.py data/annotations/processed_anno_original.csv \
+    data/annotations/pyslowfast_anno_naempty0 --method 2
+  ```
 
   + Make annotation files for training on the whole A1 set
 
-    ```
-      $ mkdir data/annotations/pyslowfast_anno_na0/full
-      $ cat data/annotations/pyslowfast_anno_na0/splits_1/train.csv \
-      data/annotations/pyslowfast_anno_na0/splits_1/val.csv \
-      > data/annotations/pyslowfast_anno_na0/full/train.csv
-      $ cp data/annotations/pyslowfast_anno_na0/splits_1/val.csv \
-      data/annotations/pyslowfast_anno_na0/full/
-    ```
+  ```
+    $ mkdir data/annotations/pyslowfast_anno_na0/full
+    $ cat data/annotations/pyslowfast_anno_na0/splits_1/train.csv \
+    data/annotations/pyslowfast_anno_na0/splits_1/val.csv \
+    > data/annotations/pyslowfast_anno_na0/full/train.csv
+    $ cp data/annotations/pyslowfast_anno_na0/splits_1/val.csv \
+    data/annotations/pyslowfast_anno_na0/full/
+  ```
 
   + download pre-trained K700 checkpoints from [here](https://drive.google.com/file/d/1wn1392Kn6CFxcSH6lJpqZky9-PJxqTlY/view?usp=sharing). Put the `k700_train_mvitV2_full_16x4_fromscratch_e200_448.pyth` under `models/`. This model achieves 71.91 top-1 accuracy on Kinetics700 validation sets.
 
@@ -94,7 +94,8 @@
   To get submission file for a test dataset, we need the model, threshold file, the videos, and the video_ids.csv.
 
   1. Get the model
-    Follow the Training process or download our checkpoint from [here](https://drive.google.com/file/d/12LQ_2iZZyFJcUjJ6zpU1CcHCbYEmoGJs/view?usp=sharing). Put the models under `models/`. This is the model that achieves No.2 on the A2 leaderboard.
+
+  Follow the Training process or download our checkpoint from [here](https://drive.google.com/file/d/12LQ_2iZZyFJcUjJ6zpU1CcHCbYEmoGJs/view?usp=sharing). Put the models under `models/`. This is the model that achieves No.2 on the A2 leaderboard.
 
   2. Get the thresholds. Put them under `thresholds/`.
 
@@ -106,28 +107,28 @@
 
   3. Run sliding-window classification (single GPU).
 
-    Given a list of video names and the path to the videos, run the model.
-    16x4, 448 model with batch_size=1 will take 5 GB GPU memory to run.
+  Given a list of video names and the path to the videos, run the model.
+  16x4, 448 model with batch_size=1 will take 5 GB GPU memory to run.
 
-    ```
-      # cd back to the root path
-      $ python scripts/run_action_classification_temporal_inf.py A2_videos.lst data/A1_A2_videos/ \
-      models/aicity_train_mvitV2_16x4_fromk700_e200_lr0.0001_yeswarmup_nomixup_dp0.5_dpr0.4_adamw_na0_full_448.pyth \
-      test/16x4_s16_448_full_na0_A2test \
-      --model_dataset aicity --frame_length 16 --frame_stride 4 --proposal_length 64 \
-      --proposal_stride 16 --video_fps 30.0  --frame_size 448 \
-      --pyslowfast_cfg configs/Aicity/MVITV2_FULL_B_16x4_CONV_448.yaml \
-      --batch_size 1 --num_cpu_workers 4
-    ```
+  ```
+    # cd back to the root path
+    $ python scripts/run_action_classification_temporal_inf.py A2_videos.lst data/A1_A2_videos/ \
+    models/aicity_train_mvitV2_16x4_fromk700_e200_lr0.0001_yeswarmup_nomixup_dp0.5_dpr0.4_adamw_na0_full_448.pyth \
+    test/16x4_s16_448_full_na0_A2test \
+    --model_dataset aicity --frame_length 16 --frame_stride 4 --proposal_length 64 \
+    --proposal_stride 16 --video_fps 30.0  --frame_size 448 \
+    --pyslowfast_cfg configs/Aicity/MVITV2_FULL_B_16x4_CONV_448.yaml \
+    --batch_size 1 --num_cpu_workers 4
+  ```
 
   4. Run post-processing with the given threshold file to get the submission files.
 
-    ```
-      $ python scripts/aicity_inf.py test/16x4_s16_448_full_na0_A2test thresholds/public_leaderboard_thres.txt \ A2_video_ids.csv test/16x4_s16_448_full_na0_A2test.txt --agg_method avg \
-      --chunk_sort_base_single_vid score --chunk_sort_base_multi_vid length --use_num_chunk 1
-    ```
+  ```
+    $ python scripts/aicity_inf.py test/16x4_s16_448_full_na0_A2test thresholds/public_leaderboard_thres.txt \ A2_video_ids.csv test/16x4_s16_448_full_na0_A2test.txt --agg_method avg \
+    --chunk_sort_base_single_vid score --chunk_sort_base_multi_vid length --use_num_chunk 1
+  ```
 
-    The submission file is `test/16x4_s16_448_full_na0_A2test.txt`. This should get F1=0.3295 as on the leaderboard on A2 test.
+  The submission file is `test/16x4_s16_448_full_na0_A2test.txt`. This should get F1=0.3295 as on the leaderboard on A2 test.
 
 ## Acknowledgement
   This code base heavily adopts the [PySlowFast](https://github.com/facebookresearch/SlowFast) code base.
