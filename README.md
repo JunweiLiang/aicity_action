@@ -90,6 +90,8 @@
 
   The model we used that ranks No.2 on the leaderboard was trained using 2x8 A100 GPUs with a global batch size of 64 and a learning rate of 1e-4 (also with gradient check-pointing but no mixed precision training). So for a 3-GPU train, we use a batch size of 3 and a learning rate of 0.000005 according to the linear scaling rule. However, in order to reproduce our results, a similar number of batch size is recommended.
 
+  To run this code on multi-machine with PyTorch DDP, add `--init_method "tcp://${MAIN_IP}:${PORT}" --num_shards ${NUM_MACHINE} --shard_id ${INDEX}` to the commands. `${MAIN_IP}` is the IP for the root node. `${INDEX}` is the node's index.
+
 ## Inference
   To get submission file for a test dataset, we need the model, threshold file, the videos, and the video_ids.csv.
 
