@@ -12,6 +12,7 @@
   3. Generate files for training on A1 videos.
 
     + Get the processed annotations and video cutting cmds
+
       ```
         $ python scripts/aicity_convert_anno.py data/annotations/annotation_A1.edited.csv \
         data/A1_A2_videos/ data/annotations/processed_anno_original.csv \
@@ -20,24 +21,28 @@
       The `processed_anno_original.csv` should have 1115 lines.
 
     + Cut the videos (you can also directly run bash)
+
       ```
         $ mkdir data/A1_clips
         $ parallel -j 4 < A1_cut.sh
       ```
 
     + Make annotation splits (without empty segments, see paper for details)
+
       ```
         $ python scripts/aicity_split_anno.py data/annotations/processed_anno_original.csv \
         data/annotations/pyslowfast_anno_na0 --method 1
       ```
 
     + Make annotation splits (with empty segments)
+
       ```
         $ python scripts/aicity_split_anno.py data/annotations/processed_anno_original.csv \
         data/annotations/pyslowfast_anno_naempty0 --method 2
       ```
 
     + Make annotation files for training on the whole A1 set
+
       ```
         $ mkdir data/annotations/pyslowfast_anno_na0/full
         $ cat data/annotations/pyslowfast_anno_na0/splits_1/train.csv \
