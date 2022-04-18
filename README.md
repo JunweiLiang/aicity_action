@@ -13,12 +13,12 @@
 
      + Get the processed annotations and video cutting cmds
 
-      ```
+       ```
         $ python scripts/aicity_convert_anno.py data/annotations/annotation_A1.edited.csv \
         data/A1_A2_videos/ data/annotations/processed_anno_original.csv \
         A1_cut.sh data/A1_clips/ --resolution=-2:540
-      ```
-      The `processed_anno_original.csv` should have 1115 lines.
+       ```
+       The `processed_anno_original.csv` should have 1115 lines.
 
      + Cut the videos (you can also directly run bash)
 
