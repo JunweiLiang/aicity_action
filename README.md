@@ -105,6 +105,7 @@
   + A1 pyslowfast_anno_naempty0/splits_1 trained and empirically searched from [here](https://drive.google.com/file/d/14gBk-mckw3eKKGu-rJtW2crn_z-4f9ug/view?usp=sharing).
 
   3. Run sliding-window classification (single GPU).
+
     Given a list of video names and the path to the videos, run the model.
     16x4, 448 model with batch_size=1 will take 5 GB GPU memory to run.
 
@@ -120,6 +121,7 @@
     ```
 
   4. Run post-processing with the given threshold file to get the submission files.
+
     ```
       $ python scripts/aicity_inf.py test/16x4_s16_448_full_na0_A2test thresholds/public_leaderboard_thres.txt \ A2_video_ids.csv test/16x4_s16_448_full_na0_A2test.txt --agg_method avg \
       --chunk_sort_base_single_vid score --chunk_sort_base_multi_vid length --use_num_chunk 1
