@@ -124,8 +124,9 @@
   4. Run post-processing with the given threshold file to get the submission files.
 
      ```
-      $ python scripts/aicity_inf.py test/16x4_s16_448_full_na0_A2test thresholds/public_leaderboard_thres.txt \ A2_video_ids.csv test/16x4_s16_448_full_na0_A2test.txt --agg_method avg \
-      --chunk_sort_base_single_vid score --chunk_sort_base_multi_vid length --use_num_chunk 1
+     $ python scripts/aicity_inf.py test/16x4_s16_448_full_na0_A2test thresholds/public_leaderboard_thres.txt \
+     A2_video_ids.csv test/16x4_s16_448_full_na0_A2test.txt --agg_method avg \
+     --chunk_sort_base_single_vid score --chunk_sort_base_multi_vid length --use_num_chunk 1
      ```
 
      The submission file is `test/16x4_s16_448_full_na0_A2test.txt`. This should get F1=0.3295 as on the leaderboard on A2 test.
