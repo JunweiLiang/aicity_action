@@ -2,7 +2,7 @@
 
 ## Introduction
 
-  The AI City Challenge's [Naturalistic Driving Action Recognition](https://www.aicitychallenge.org/2022-challenge-tracks/) intends to temporally localize driver actions given multi-view video streams. Our system, the Stargazer system, achieves second-place performance so far on the public leaderboard. Our system is based on the [improved multi-scale vision transformers](https://arxiv.org/abs/2112.01526) and large-scale pretraining on the Kinetics-700 dataset. Our CVPR workshop paper will be released soon.
+  The AI City Challenge's [Naturalistic Driving Action Recognition](https://www.aicitychallenge.org/2022-challenge-tracks/) intends to temporally localize driver actions given multi-view video streams. Our system, the Stargazer system, achieves **second-place** performance so far on the public leaderboard. Our system is based on the [improved multi-scale vision transformers](https://arxiv.org/abs/2112.01526) and large-scale pretraining on the Kinetics-700 dataset. Our CVPR workshop paper will be released soon.
 
   <div align="center">
     <div style="">
