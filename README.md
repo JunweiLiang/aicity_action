@@ -1,9 +1,20 @@
-# Modified PySlowFast (with MViT v2) By Junwei Liang for AI City Challenge
+# Modified PySlowFast (with MViT v2) for AI City Challenge
+
+## Introduction
+
+  The AI City Challenge's [Naturalistic Driving Action Recognition](https://www.aicitychallenge.org/2022-challenge-tracks/) intends to temporally localize driver actions given multi-view video streams. Our system, the Stargazer system, achieves second-place performance so far on the public leaderboard. Our system is based on the [improved multi-scale vision transformers](https://arxiv.org/abs/2112.01526) and large-scale pretraining on the Kinetics-700 dataset. Our CVPR workshop paper will be released soon.
+
+  <div align="center">
+    <div style="">
+        <img src="figures/aicity_figure1" height="300px" />
+        <img src="figures/leaderboard_042022" height="300px" />
+    </div>
+  </div>
 
 
 ## Requirement
   + ffmpeg >= 3.4 for cutting the videos into clips for training.
-  + python 3.8, tqdm, decord, opencv, pyav, pytorch>=1.9.0
+  + python 3.8, tqdm, decord, opencv, pyav, pytorch>=1.9.0, fairscale
 
 ## Data Preparation
   1. Put all videos into a single path under `data/A1_A2_videos/`. There should be 60 ".MP4" under this directory
