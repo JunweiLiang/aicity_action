@@ -6,8 +6,8 @@
 
   <div align="center">
     <div style="">
-        <img src="figures/aicity_figure1" height="300px" />
-        <img src="figures/leaderboard_042022" height="300px" />
+        <img src="figures/aicity_figure1.png" height="300px" />
+        <img src="figures/leaderboard_042022.png" height="300px" />
     </div>
   </div>
 
