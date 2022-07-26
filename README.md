@@ -3,7 +3,7 @@
 ## Introduction
 
   The AI City Challenge's [Naturalistic Driving Action Recognition](https://www.aicitychallenge.org/2022-challenge-tracks/) intends to temporally localize driver actions given multi-view video streams. 
-  Our system, the Stargazer system, achieves **second-place** performance on the public leaderboard and third-place in the [final test](https://www.aicitychallenge.org/2022-challenge-winners/). 
+  Our system, the Stargazer system, achieves **second-place** performance on the [public leaderboard](https://arxiv.org/pdf/2204.10380.pdf) and third-place in the [final test](https://www.aicitychallenge.org/2022-challenge-winners/). 
   Our system is based on the [improved multi-scale vision transformers](https://arxiv.org/abs/2112.01526) and large-scale pretraining on the Kinetics-700 dataset. Our CVPR workshop paper detailing the designs is [here](https://openaccess.thecvf.com/content/CVPR2022W/AICity/papers/Liang_Stargazer_A_Transformer-Based_Driver_Action_Detection_System_for_Intelligent_Transportation_CVPRW_2022_paper.pdf).
 
   <div align="center">
@@ -13,6 +13,18 @@
     </div>
   </div>
 
+## Citations
+If you find this code useful in your research then please cite
+
+```
+@inproceedings{liang2022stargazer,
+  title={Stargazer: A transformer-based driver action detection system for intelligent transportation},
+  author={Liang, Junwei and Zhu, He and Zhang, Enwei and Zhang, Jun},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  pages={3160--3167},
+  year={2022}
+}
+```
 
 ## Requirement
   + ffmpeg >= 3.4 for cutting the videos into clips for training.
