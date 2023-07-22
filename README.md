@@ -96,7 +96,7 @@ If you find this code useful in your research then please cite
   ```
     $ mkdir -p exps/aicity_train
     $ cd exps/aicity_train
-    $ python ../../tools/run_net.py --cfg ../../configs/VITV2_FULL_B_16x4_CONV_448.yaml \
+    $ python ../../tools/run_net.py --cfg ../../configs/MVITV2_FULL_B_16x4_CONV_448.yaml \
     TRAIN.CHECKPOINT_FILE_PATH ../../models/k700_train_mvitV2_full_16x4_fromscratch_e200_448.pyth \
     DATA.PATH_PREFIX ../../data/A1_clips \
     DATA.PATH_TO_DATA_DIR ../../data/annotations/pyslowfast_anno_na0/full \
